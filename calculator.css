@@ -190,7 +190,6 @@ button.calculate:hover {
 
 .checkmark {
   position: absolute;
-  top: 0;
   left: 0;
   height: 25px;
   width: 25px;
@@ -229,4 +228,86 @@ button.calculate:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+
+  .box {
+    padding: 20px;
+  }
+
+  .container__height-weight {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .gender {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .box {
+    padding: 15px;
+  }
+
+  .gender {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input input {
+    padding: 10px;
+  }
+
+  button.calculate {
+    padding: 12px;
+  }
+
+  #result {
+    font-size: 28px;
+  }
+
+  .comment {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  .input label {
+    font-size: 14px;
+  }
+
+  .input input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button.calculate {
+    font-size: 14px;
+  }
+
+  #result {
+    font-size: 24px;
+  }
+
+  .comment {
+    font-size: 14px;
+  }
 }
