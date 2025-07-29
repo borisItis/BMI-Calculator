@@ -13,301 +13,138 @@ body {
   background: rgb(97, 138, 254, 0.9);
 }
 
-.container {
-  min-width: 100px;
+.bmi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
-.box {
+.bmi__box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 480px;
-  background: #fafafa;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
 }
 
-h1 {
-  color: rgb(0, 0, 0, 0.7);
+.bmi__title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.bmi__form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.bmi__input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.bmi__label {
+  margin-bottom: 10px;
   font-weight: bold;
-  font-size: 36px;
-  padding: 30px 0;
 }
 
-.content {
-  padding: 0 30px;
+.bmi__input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.input {
-  background: #fff;
-  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 20px 0;
-  margin-bottom: 20px;
-}
-
-.input label {
-  display: block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 20px;
-}
-.input input {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #4f7df9;
-  width: 50%;
-  text-align: center;
-  font-size: 28px;
-  font-family: "Nunito", sans-serif;
-}
-
-.input__weight {
-  background: #fff;
-  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 10px 0;
-  margin-bottom: 20px;
-}
-
-.input__weight label {
-  display: block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 20px;
-}
-.input__weight input {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #4f7df9;
-  width: 50%;
-  text-align: center;
-  font-size: 28px;
-  font-family: "Nunito", sans-serif;
-}
-
-.input__height {
-  background: #fff;
-  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 10px 0;
-  margin-bottom: 20px;
-  margin-right: 20px;
-}
-
-.input__height label {
-  display: block;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 20px;
-}
-.input__height input {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #4f7df9;
-  width: 50%;
-  text-align: center;
-  font-size: 28px;
-  font-family: "Nunito", sans-serif;
-}
-
-button.calculate {
-  cursor: pointer;
-  font-family: "Nunito", sans-serif;
-  color: #fff;
-  background: rgb(97, 138, 254, 1);
-  font-size: 16px;
-  border-radius: 7px;
-  padding: 12px 0;
-  width: 100%;
-  outline: none;
-  border: none;
-  transition: all 0.5s;
-}
-button.calculate:hover {
-  background: #0044ff;
-}
-
-.result {
-  padding: 10px 20px;
-}
-.result p {
-  font-weight: 600;
-  font-size: 22px;
-  color: #000;
-  margin-bottom: 15px;
-}
-.result #result {
-  font-size: 36px;
-  font-weight: 900;
-  color: #4f7df9;
-  background-color: #eaeaea;
-  display: inline-block;
-  padding: 7px 20px;
-  border-radius: 55px;
-  margin-bottom: 25px;
-}
-#comment {
-  color: #4f7df9;
-  font-weight: 800;
-}
-
-.comment {
-  display: none;
-  border: dashed 1px;
-  border-radius: 7px;
-  padding: 5px;
-}
-
-.gender {
+.bmi__gender {
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bmi__gender-option {
+  display: flex;
   align-items: center;
-  align-content: center;
-  background: #fff;
-  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 20px 0;
-  margin-bottom: 20px;
-}
-
-.gender .container {
-  display: flex;
-  position: relative;
-  padding-left: 35px;
-  margin-top: 7px;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-.gender .container input {
-  position: absolute;
-  opacity: 0;
   cursor: pointer;
 }
 
-.checkmark {
-  position: absolute;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
+.bmi__radio {
+  margin-right: 6px;
 }
 
-.gender .container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.gender .container input:checked ~ .checkmark {
-  background-color: #2196f3;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.gender .container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.gender .container .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-}
-
-.container__height-weight {
+.bmi__measurements {
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
+  flex-direction: row;
   align-items: center;
+}
+
+.bmi__calculate-button {
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.bmi__calculate-button:hover {
+  background-color: #0056b3;
+}
+
+.bmi__result {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.bmi__result-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.bmi__comment {
+  font-style: Poppins, sans-serif;
+  color: #555;
 }
 
 @media (max-width: 1024px) {
-  .container {
-    padding: 15px;
-  }
-
-  .box {
-    padding: 20px;
-  }
-
-  .container__height-weight {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .gender {
-    justify-content: center;
+  .bmi__box {
+    padding: 25px;
   }
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
+@media (max-width: 600px) {
+  .bmi__measurements {
+    flex-direction: column;
   }
 
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  .box {
-    padding: 15px;
-  }
-
-  .gender {
+  .bmi__gender {
     flex-direction: column;
     gap: 10px;
-  }
-
-  .input input {
-    padding: 10px;
-  }
-
-  button.calculate {
-    padding: 12px;
-  }
-
-  #result {
-    font-size: 28px;
-  }
-
-  .comment {
-    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 20px;
+  .bmi__box {
+    padding: 20px;
   }
 
-  .input label {
-    font-size: 14px;
+  .bmi__title {
+    font-size: 1.5rem;
   }
 
-  .input input {
-    font-size: 14px;
-    padding: 8px;
+  .bmi__calculate-button {
+    padding: 10px;
+    font-size: 1rem;
   }
 
-  button.calculate {
-    font-size: 14px;
-  }
-
-  #result {
-    font-size: 24px;
-  }
-
-  .comment {
-    font-size: 14px;
+  .bmi__result-value {
+    font-size: 1.5rem;
   }
 }

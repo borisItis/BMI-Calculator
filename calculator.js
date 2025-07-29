@@ -1,77 +1,44 @@
-const ageInput = document.getElementById("age");
-const heightInput = document.getElementById("height");
-const weightInput = document.getElementById("weight");
-const maleRadio = document.getElementById("Male");
-const femaleRadio = document.getElementById("Female");
-const calculateBtn = document.querySelector(".calculate");
-const resultDisplay = document.getElementById("result");
-const commentDisplay = document.querySelector(".comment");
+const heightInput = document.querySelector(".bmi__input--height");
+const weightInput = document.querySelector(".bmi__input--weight");
+const calculateBtn = document.querySelector(".bmi__calculate-button");
+const resultValue = document.querySelector(".bmi__result-value");
+const resultComment = document.querySelector(".bmi__comment");
+const ageInput = document.querySelector(".bmi__input--age");
+const genderInputs = document.querySelectorAll(".bmi__radio");
 
-const calculateBMI = () => {
-  const age = ageInput.value;
-  const height = heightInput.value;
-  const weight = weightInput.value;
-  const isMale = maleRadio.checked;
-  const isFemale = femaleRadio.checked;
+calculateBtn.addEventListener("click", (e) => {
+  e.preventDefault();
 
-  if (!age || !height || !weight || (!isMale && !isFemale)) {
-    showError("Please fill all fields");
+  const height = parseFloat(heightInput.value);
+  const weight = parseFloat(weightInput.value);
+
+  if (!height || !weight || height <= 0 || weight <= 0) {
+    resultValue.textContent = "Invalid input";
+    resultComment.textContent = "Please enter valid height and weight.";
     return;
   }
 
-  if (isNaN(age) || isNaN(height) || isNaN(weight)) {
-    showError("Please enter valid numbers");
-    return;
+  const bmi = weight / (height / 100) ** 2;
+  resultValue.textContent = bmi.toFixed(2);
+
+  if (bmi < 18.5) {
+    resultComment.textContent = "Underweight";
+    resultValue.style.color = "#FF0000";
+  } else if (bmi < 25) {
+    resultComment.textContent = "Normal weight";
+    resultValue.style.color = "#00FF00";
+  } else if (bmi < 30) {
+    resultComment.textContent = "Overweight";
+    resultValue.style.color = "#FFFF00";
+  } else {
+    resultComment.textContent = "Obesity";
+    resultValue.style.color = "#FF0000";
   }
 
-  const ageNum = Number(age);
-  const heightNum = Number(height);
-  const weightNum = Number(weight);
-
-  if (ageNum < 2 || ageNum > 120) {
-    showError("Age must be between 2-120");
-    return;
-  }
-
-  if (heightNum < 50 || heightNum > 250) {
-    showError("Height must be between 50-250 cm");
-    return;
-  }
-
-  if (weightNum < 2 || weightNum > 300) {
-    showError("Weight must be between 2-300 kg");
-    return;
-  }
-
-  const heightInMeters = heightNum / 100;
-  const bmi = weightNum / (heightInMeters * heightInMeters);
-  const roundedBMI = bmi.toFixed(2);
-
-  let category;
-  if (bmi < 18.5) category = "Underweight";
-  else if (bmi < 25) category = "Normal weight";
-  else if (bmi < 30) category = "Overweight";
-  else category = "Obese";
-
-  resultDisplay.textContent = roundedBMI;
-  commentDisplay.textContent = category;
-  setResultColor(bmi);
-};
-const showError = (message) => {
-  resultDisplay.textContent = "Error";
-  commentDisplay.textContent = message;
-  resultDisplay.style.color = "red";
-};
-const resetForm = () => {
-  resultDisplay.textContent = "00.00";
-  commentDisplay.textContent = "";
-};
-
-calculateBtn.addEventListener("click", calculateBMI);
-ageInput.addEventListener("input", resetForm);
-heightInput.addEventListener("input", resetForm);
-weightInput.addEventListener("input", resetForm);
-maleRadio.addEventListener("change", resetForm);
-femaleRadio.addEventListener("change", resetForm);
-
-resetForm();
+  heightInput.value = "";
+  weightInput.value = "";
+  ageInput.value = "";
+  genderInputs.forEach((input) => {
+    input.checked = false;
+  });
+});
